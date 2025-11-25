@@ -118,7 +118,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Stats Summary */}
-        <div className="mx-4 mt-8 mb-4 rounded-2xl bg-primary/10 p-6 dark:bg-primary/20 border border-primary/20">
+        <div className="mx-4 mt-8 mb-8 rounded-2xl bg-primary/10 p-6 dark:bg-primary/20 border border-primary/20">
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
               <span className="text-3xl font-black text-primary">300+</span>
@@ -130,6 +130,17 @@ const Home: React.FC = () => {
               <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Potencial inicial</span>
             </div>
           </div>
+        </div>
+
+        {/* Footer */}
+        <div className="px-4 py-8 text-center text-gray-400 dark:text-gray-600">
+          <div className="flex justify-center gap-4 mb-4">
+            <Icon name="rocket_launch" />
+            <Icon name="favorite" />
+            <Icon name="bolt" />
+          </div>
+          <p className="text-xs">© 2024 RendaExtra App</p>
+          <p className="text-[10px] mt-1">Construa seu futuro hoje.</p>
         </div>
       </main>
 

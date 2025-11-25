@@ -14,14 +14,36 @@ const Detail: React.FC = () => {
     return <div className="p-8 text-center">Ideia não encontrada. <button onClick={() => navigate('/')} className="text-primary underline">Voltar</button></div>;
   }
 
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: `RendaExtra: ${idea.title}`,
+        text: `Olha essa ideia de renda extra: ${idea.shortDescription}`,
+        url: window.location.href,
+      }).catch(console.error);
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copiado para a área de transferência!");
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 pb-24">
       {/* Header */}
-      <header className="sticky top-0 z-20 flex items-center bg-white/80 dark:bg-gray-900/80 p-4 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+      <header className="sticky top-0 z-20 flex items-center bg-white/80 dark:bg-gray-900/80 p-4 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 gap-2">
         <button onClick={() => navigate(-1)} className="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200">
           <Icon name="arrow_back" className="text-xl" />
         </button>
         <h1 className="flex-1 text-center text-base font-bold leading-tight tracking-tight line-clamp-1 px-2">{idea.title}</h1>
+        
+        <button 
+          onClick={handleShare} 
+          className="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-400"
+          aria-label="Compartilhar"
+        >
+          <Icon name="share" />
+        </button>
+
          <button 
           onClick={toggleTheme} 
           className="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-400"
@@ -45,14 +67,14 @@ const Detail: React.FC = () => {
               <Icon name="payments" />
               <span className="text-xs font-bold uppercase tracking-wide opacity-80">Lucro Estimado</span>
             </div>
-            <p className="text-sm font-semibold text-gray-900 dark:text-white leading-tight">{idea.profit}</p>
+            <p className="text-base font-semibold text-gray-900 dark:text-white leading-tight">{idea.profit}</p>
           </div>
           <div className="flex flex-col gap-2 rounded-xl bg-gray-50 dark:bg-gray-800 p-4 border border-gray-100 dark:border-gray-700">
              <div className="flex items-center gap-2 text-amber-500">
               <Icon name="account_balance_wallet" />
               <span className="text-xs font-bold uppercase tracking-wide opacity-80">Investimento</span>
             </div>
-            <p className="text-sm font-semibold text-gray-900 dark:text-white leading-tight">{idea.costValue}</p>
+            <p className="text-base font-semibold text-gray-900 dark:text-white leading-tight">{idea.costValue}</p>
           </div>
         </div>
 
