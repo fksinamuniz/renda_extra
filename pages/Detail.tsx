@@ -15,14 +15,17 @@ const Detail: React.FC = () => {
   }
 
   const handleShare = () => {
+    // URL oficial de produção para garantir que o link funcione para qualquer pessoa
+    const shareUrl = `https://fksinamuniz.github.io/renda_extra/#/idea/${idea.id}`;
+
     if (navigator.share) {
       navigator.share({
         title: `RendaExtra: ${idea.title}`,
         text: `Olha essa ideia de renda extra: ${idea.shortDescription}`,
-        url: window.location.href,
+        url: shareUrl,
       }).catch(console.error);
     } else {
-      navigator.clipboard.writeText(window.location.href);
+      navigator.clipboard.writeText(shareUrl);
       alert("Link copiado para a área de transferência!");
     }
   };
