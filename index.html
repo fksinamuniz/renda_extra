@@ -1,91 +1,600 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#10B981" />
     <meta name="description" content="Descubra mais de 300 ideias de renda extra com baixo investimento. Guia completo para empreender." />
     
-    <!-- Open Graph / Social Media Meta Tags -->
+    <!-- Open Graph -->
     <meta property="og:title" content="RendaExtra App - 300+ Ideias" />
-    <meta property="og:description" content="Descubra mais de 300 ideias de renda extra com baixo investimento. Guia completo para empreender." />
+    <meta property="og:description" content="Descubra mais de 300 ideias de renda extra com baixo investimento." />
     <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDVWqC9ouTEGRH5SU0GGeF6PoA2jbPQdnousyuGpHpN2khrOGHNhgkUgrMqCvYnWcCVgv-eGwvbG_VvBN7j7GZdKiUzYioudkLL60vSKtvjqrBCxXmmszdG37CfJW_n_NeF_rn4Fvu5u_xp2zlI137K3wQh9x--pbwIUG2_SRqkDkmHVI2y1vgiwgaoM3-9O7rHL1jlXxQHZnstMy9IY5OeQLaVVzZHqQ4rTOYRnztedleMhF0VL-jqG9qi59nReL7f2EatfWRWIh0" />
-    <meta property="og:url" content="https://fksinamuniz.github.io/renda_extra/" />
-    <meta property="og:type" content="website" />
-    <link rel="canonical" href="https://fksinamuniz.github.io/renda_extra/" />
-
+    
     <title>RendaExtra App</title>
+
+    <!-- Bibliotecas Externas (React, ReactDOM, Router, Babel, Tailwind) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-router-dom@6/umd/react-router-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,container-queries"></script>
+
+    <!-- Fontes e Ícones -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
     <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        background-color: #F3F4F6; /* Gray 50 */
-        -webkit-tap-highlight-color: transparent;
-      }
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-      /* Hide scrollbar for Chrome, Safari and Opera */
-      .no-scrollbar::-webkit-scrollbar {
-          display: none;
-      }
-      /* Hide scrollbar for IE, Edge and Firefox */
-      .no-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
-      }
-      
-      @keyframes fadeIn {
-        from { opacity: 0; transform: scale(1.05); }
-        to { opacity: 1; transform: scale(1); }
-      }
-      .animate-fade-in {
-        animation: fadeIn 1.2s ease-out forwards;
-      }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
     </style>
+
     <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#10B981", // Emerald 500
-              "primary-dark": "#059669",
-              "background-light": "#F3F4F6",
-              "background-dark": "#1F2937",
-              "card-light": "#FFFFFF",
-              "card-dark": "#374151",
-              text: "#1F2937",
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10B981",
+                        "primary-dark": "#059669",
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#1F2937",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#374151",
+                        text: "#1F2937",
+                    },
+                    fontFamily: { display: ["Inter", "sans-serif"] },
+                },
             },
-            fontFamily: {
-              display: ["Inter", "sans-serif"],
-            },
-          },
-        },
-      }
+        }
     </script>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+    "react": "https://aistudiocdn.com/react@^19.2.0"
   }
 }
 </script>
 </head>
-  <body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 transition-colors duration-200">
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 transition-colors duration-200">
     <div id="root"></div>
-  </body>
+
+    <script type="text/babel" data-presets="react,typescript">
+        const { useState, useEffect, createContext, useContext } = React;
+        const { HashRouter, Routes, Route, useNavigate, useSearchParams, useParams, Link } = ReactRouterDOM;
+
+        // --- DATA & TYPES ---
+        
+        const categories = [
+            { id: 'vendas', name: 'Vendas e Comércio', icon: 'storefront', searchKey: 'Vendas' },
+            { id: 'online', name: 'Trabalho Online', icon: 'laptop_chromebook', searchKey: 'Online' },
+            { id: 'servicos', name: 'Serviços Gerais', icon: 'home_repair_service', searchKey: 'Serviços' },
+            { id: 'beleza', name: 'Beleza e Estética', icon: 'spa', searchKey: 'Beleza' },
+            { id: 'educacao', name: 'Educação e Aulas', icon: 'school', searchKey: 'Educação' },
+            { id: 'tecnologia', name: 'Tecnologia', icon: 'devices', searchKey: 'Tecnologia' },
+            { id: 'aluguel', name: 'Aluguel e Economia', icon: 'key', searchKey: 'Aluguel' },
+            { id: 'criativo', name: 'Artesanato e Criativo', icon: 'palette', searchKey: 'Criativo' },
+        ];
+
+        const baseIdeas = [
+            {
+                id: 'doces-gourmet',
+                title: 'Venda de Doces Gourmet',
+                shortDescription: 'Produza e venda doces caseiros em sua comunidade ou online.',
+                fullDescription: 'A venda de doces gourmet é uma excelente oportunidade para quem ama cozinhar e quer transformar essa paixão em uma fonte de renda. O mercado valoriza produtos artesanais, com ingredientes de qualidade e apresentação diferenciada, permitindo uma boa margem de lucro.',
+                category: 'Vendas',
+                cost: 'Baixo',
+                costValue: 'Até R$ 100',
+                profit: 'R$ 500 - R$ 1.500/mês',
+                difficulty: 'Fácil',
+                tags: ['Vendas', 'Alimentação', 'Baixo Custo'],
+                image: 'https://images.unsplash.com/photo-1599354607476-69d6515b136c?auto=format&fit=crop&q=80&w=800',
+                requirements: ['Ingredientes básicos', 'Utensílios de cozinha', 'Embalagens', 'Balança'],
+                steps: ['Defina cardápio', 'Calcule custo', 'Crie perfis sociais', 'Degustações', 'Venda sob encomenda'],
+                tips: 'Crie kits para presente em datas comemorativas.'
+            },
+            {
+                id: 'conteudo-digital',
+                title: 'Conteúdo para Redes Sociais',
+                shortDescription: 'Crie um blog, canal no YouTube ou perfil em redes sociais.',
+                fullDescription: 'Gerenciar redes sociais ou criar conteúdo UGC para marcas é uma das formas mais rápidas de crescer online.',
+                category: 'Online',
+                cost: 'Baixo',
+                costValue: 'R$ 0 - R$ 200',
+                profit: 'R$ 1.000 - R$ 5.000/mês',
+                difficulty: 'Médio',
+                tags: ['Online', 'Criativo', 'Baixo Custo'],
+                image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800',
+                requirements: ['Smartphone', 'Edição básica', 'Internet'],
+                steps: ['Escolha nicho', 'Crie portfólio', 'Aborde empresas'],
+                tips: 'A consistência é chave.',
+                isNew: true
+            },
+            {
+                id: 'passeador-caes',
+                title: 'Passeador de Cães',
+                shortDescription: 'Ofereça serviços de passeio para cães na sua vizinhança.',
+                fullDescription: 'Se você gosta de animais, ser um "Dog Walker" pode ser terapêutico e lucrativo.',
+                category: 'Serviços',
+                cost: 'Baixo',
+                costValue: 'R$ 0 - R$ 50',
+                profit: 'R$ 800 - R$ 2.000/mês',
+                difficulty: 'Fácil',
+                tags: ['Serviços', 'Médio Custo', 'Animais'],
+                image: 'https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?auto=format&fit=crop&q=80&w=800',
+                requirements: ['Amor por animais', 'Disposição', 'Saquinhos'],
+                steps: ['Divulgue no bairro', 'Cartões em pet shops', 'Desconto 1º passeio'],
+                tips: 'Envie fotos do passeio para os donos.'
+            },
+            {
+                id: 'redator-freelancer',
+                title: 'Redator Freelancer',
+                shortDescription: 'Escreva artigos e posts para blogs.',
+                fullDescription: 'Ofereça serviços de redação, revisão e copywriting para sites.',
+                category: 'Online',
+                cost: 'Baixo',
+                costValue: 'R$ 0',
+                profit: 'R$ 1.500 - R$ 4.000/mês',
+                difficulty: 'Médio',
+                tags: ['Online', 'Freelancer', 'Baixo Custo'],
+                image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800',
+                requirements: ['Computador', 'Gramática', 'SEO básico'],
+                steps: ['Perfil em sites de freela', 'Portfólio', 'Projetos pequenos'],
+                tips: 'Especialize-se em um nicho.'
+            },
+            {
+                id: 'artesanato-local',
+                title: 'Venda de Artesanato Local',
+                shortDescription: 'Crie e venda produtos artesanais.',
+                fullDescription: 'Produtos feitos à mão têm valor percebido alto.',
+                category: 'Criativo',
+                cost: 'Médio',
+                costValue: 'R$ 200 - R$ 500',
+                profit: 'R$ 1.000 - R$ 3.000/mês',
+                difficulty: 'Médio',
+                tags: ['Vendas', 'Criativo', 'Manual'],
+                image: 'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&q=80&w=800',
+                requirements: ['Materiais', 'Espaço', 'Embalagens'],
+                steps: ['Aprenda técnica', 'Estoque inicial', 'Fotos e anúncio'],
+                tips: 'Capriche no unboxing.'
+            },
+            {
+                id: 'aulas-reforco',
+                title: 'Aulas de Reforço Escolar',
+                shortDescription: 'Aulas particulares online ou presenciais.',
+                fullDescription: 'Ajude estudantes com dificuldade em matérias escolares.',
+                category: 'Educação',
+                cost: 'Baixo',
+                costValue: 'R$ 0',
+                profit: 'R$ 50 - R$ 150/hora',
+                difficulty: 'Médio',
+                tags: ['Serviços', 'Ensino', 'Baixo Custo'],
+                image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800',
+                requirements: ['Domínio da matéria', 'Computador', 'Material'],
+                steps: ['Defina matérias', 'Divulgue', 'Prepare roteiro'],
+                tips: 'Pacotes mensais garantem previsibilidade.'
+            },
+            {
+                id: 'assistente-virtual',
+                title: 'Assistente Virtual',
+                shortDescription: 'Suporte administrativo remoto.',
+                fullDescription: 'Ajude empresários a organizar agendas e e-mails.',
+                category: 'Online',
+                cost: 'Baixo',
+                costValue: 'R$ 0',
+                profit: 'R$ 1.500 - R$ 4.000/mês',
+                difficulty: 'Médio',
+                tags: ['Online', 'Administrativo', 'Freelancer'],
+                image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800',
+                requirements: ['Computador', 'Organização', 'Office'],
+                steps: ['Defina serviços', 'LinkedIn', 'Plataformas de freela'],
+                tips: 'Especialize-se em nichos (médicos, advogados).'
+            },
+            {
+                id: 'afiliado-digital',
+                title: 'Afiliado Digital',
+                shortDescription: 'Divulgue produtos e ganhe comissões.',
+                fullDescription: 'Venda produtos de terceiros e ganhe %.',
+                category: 'Online',
+                cost: 'Baixo',
+                costValue: 'R$ 0 - R$ 100',
+                profit: 'R$ 500 - R$ 5.000/mês',
+                difficulty: 'Médio',
+                tags: ['Vendas', 'Online', 'Marketing'],
+                image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+                requirements: ['Internet', 'Redes sociais'],
+                steps: ['Cadastre-se em programas', 'Escolha produtos', 'Crie conteúdo'],
+                tips: 'Crie valor real, não faça spam.',
+                isNew: true
+            },
+            {
+                id: 'brecho-online',
+                title: 'Brechó Online',
+                shortDescription: 'Venda roupas usadas.',
+                fullDescription: 'Garimpe peças ou venda o que não usa mais.',
+                category: 'Vendas',
+                cost: 'Baixo',
+                costValue: 'R$ 0 - R$ 200',
+                profit: 'R$ 300 - R$ 2.000/mês',
+                difficulty: 'Fácil',
+                tags: ['Vendas', 'Moda', 'Sustentável'],
+                image: 'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&q=80&w=800',
+                requirements: ['Roupas', 'Celular', 'Embalagens'],
+                steps: ['Separe peças', 'Fotos iluminadas', 'Loja no Instagram/Enjoei'],
+                tips: 'Monte looks completos.'
+            },
+            {
+                id: 'manutencao-celular',
+                title: 'Reparo de Celulares',
+                shortDescription: 'Conserte smartphones.',
+                fullDescription: 'Troca de tela e bateria tem alta demanda.',
+                category: 'Tecnologia',
+                cost: 'Médio',
+                costValue: 'R$ 300 - R$ 800',
+                profit: 'R$ 2.000 - R$ 5.000/mês',
+                difficulty: 'Difícil',
+                tags: ['Serviços', 'Técnico', 'Alto Retorno'],
+                image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=800',
+                requirements: ['Ferramentas', 'Curso', 'Peças'],
+                steps: ['Curso técnico', 'Compre kit', 'Conserte para amigos'],
+                tips: 'Honestidade e prazo são fundamentais.'
+            }
+        ];
+
+        const extraIdeas = [
+            { id: 'bolos-pote', title: 'Bolos de Pote', category: 'Vendas', shortDescription: 'Bolos individuais deliciosos.', fullDescription: 'Sucesso de vendas, prático e lucrativo.', cost: 'Baixo', costValue: 'R$ 100', profit: 'R$ 800 - R$ 2.000', difficulty: 'Fácil', tags: ['Alimentação', 'Vendas', 'Doces'], image: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&q=80&w=800', requirements: ['Potes', 'Ingredientes'], steps: ['Crie sabores', 'Etiquetas', 'Divulgue'], tips: 'Capriche no recheio.' },
+            { id: 'gestor-trafego', title: 'Gestor de Tráfego', category: 'Online', shortDescription: 'Anúncios online para empresas.', fullDescription: 'Gerencie orçamentos de marketing no Google/Facebook.', cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 1.000 - R$ 10.000', difficulty: 'Difícil', tags: ['Marketing', 'Online', 'Alto Retorno'], image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800', requirements: ['Computador', 'Conhecimento Ads'], steps: ['Estude', 'Ofereça grátis inicial', 'Mostre resultados'], tips: 'Comece com negócios locais.' },
+            { id: 'personal-organizer', title: 'Personal Organizer', category: 'Serviços', shortDescription: 'Organize casas e closets.', fullDescription: 'Ajude pessoas a colocar a casa em ordem.', cost: 'Baixo', costValue: 'R$ 50', profit: 'R$ 100 - R$ 200/hora', difficulty: 'Médio', tags: ['Organização', 'Casa', 'Serviços'], image: 'https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&q=80&w=800', requirements: ['Gostar de ordem', 'Técnicas'], steps: ['Curso online', 'Portfólio com amigos', 'Antes e depois'], tips: 'Nichos como mudança pagam bem.' },
+            { id: 'manicure', title: 'Manicure a Domicílio', category: 'Beleza', shortDescription: 'Cuidados com unhas.', fullDescription: 'Profissão clássica e sempre em demanda.', cost: 'Baixo', costValue: 'R$ 200', profit: 'R$ 1.500 - R$ 3.500', difficulty: 'Médio', tags: ['Beleza', 'Serviços', 'Mulheres'], image: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&q=80&w=800', requirements: ['Alicates', 'Esmaltes'], steps: ['Curso', 'Biossegurança', 'Divulgue'], tips: 'Unhas em gel cobram o dobro.' },
+            { id: 'informatica-idosos', title: 'Informática para Idosos', category: 'Educação', shortDescription: 'Ensine tecnologia.', fullDescription: 'Ensine a usar celular e internet com paciência.', cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 40 - R$ 80/hora', difficulty: 'Fácil', tags: ['Educação', 'Tecnologia', 'Social'], image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800', requirements: ['Paciência', 'Conhecimento'], steps: ['Vizinhos', 'Recomendações'], tips: 'Crie tutoriais impressos.' },
+            { id: 'formatacao-pc', title: 'Formatação de PC', category: 'Tecnologia', shortDescription: 'Limpeza e instalação de sistema.', fullDescription: 'Recupere computadores lentos.', cost: 'Baixo', costValue: 'R$ 20', profit: 'R$ 80 - R$ 200', difficulty: 'Médio', tags: ['Tecnologia', 'Serviços', 'Técnico'], image: 'https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&q=80&w=800', requirements: ['Pen drive', 'Softwares'], steps: ['Backup', 'Antivírus', 'Limpeza'], tips: 'Leva e traz.' },
+            { id: 'aluguel-vestidos', title: 'Aluguel de Vestidos', category: 'Aluguel', shortDescription: 'Alugue roupas de festa.', fullDescription: 'Rentabilize roupas paradas.', cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 100 - R$ 300', difficulty: 'Fácil', tags: ['Moda', 'Sustentável', 'Passiva'], image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800', requirements: ['Roupas boas', 'Contrato'], steps: ['Fotos', 'Anúncio'], tips: 'Cobre caução.' }
+        ];
+
+        // Combinação de todas as ideias
+        const ideas = [...baseIdeas, ...extraIdeas];
+
+        // --- COMPONENTS ---
+
+        const Icon = ({ name, className = '' }) => (
+            <span className={`material-symbols-outlined select-none ${className}`}>{name}</span>
+        );
+
+        // --- THEME CONTEXT ---
+
+        const ThemeContext = createContext();
+
+        const ThemeProvider = ({ children }) => {
+            const [theme, setTheme] = useState(() => {
+                const saved = localStorage.getItem('theme');
+                if (saved) return saved;
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            });
+
+            useEffect(() => {
+                const root = window.document.documentElement;
+                root.classList.remove('light', 'dark');
+                root.classList.add(theme);
+                localStorage.setItem('theme', theme);
+            }, [theme]);
+
+            const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
+
+            return (
+                <ThemeContext.Provider value={{ theme, toggleTheme }}>
+                    {children}
+                </ThemeContext.Provider>
+            );
+        };
+
+        const useTheme = () => {
+            const context = useContext(ThemeContext);
+            if (!context) throw new Error('useTheme must be used within a ThemeProvider');
+            return context;
+        };
+
+        // --- PAGES ---
+
+        const Welcome = () => {
+            const navigate = useNavigate();
+            return (
+                <div className="relative flex min-h-screen w-full flex-col justify-end pb-12 overflow-hidden bg-gray-900">
+                    <div className="absolute inset-0 bg-cover bg-center z-0 animate-fade-in" style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVWqC9ouTEGRH5SU0GGeF6PoA2jbPQdnousyuGpHpN2khrOGHNhgkUgrMqCvYnWcCVgv-eGwvbG_VvBN7j7GZdKiUzYioudkLL60vSKtvjqrBCxXmmszdG37CfJW_n_NeF_rn4Fvu5u_xp2zlI137K3wQh9x--pbwIUG2_SRqkDkmHVI2y1vgiwgaoM3-9O7rHL1jlXxQHZnstMy9IY5OeQLaVVzZHqQ4rTOYRnztedleMhF0VL-jqG9qi59nReL7f2EatfWRWIh0')` }}></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10"></div>
+                    <div className="relative z-20 px-6 w-full max-w-md mx-auto flex flex-col items-start">
+                        <div className="mb-6 flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-md border border-white/10 shadow-lg">
+                            <Icon name="verified" className="text-primary text-lg" />
+                            <span className="text-white text-xs font-bold tracking-wide uppercase">Oportunidades Reais</span>
+                        </div>
+                        <h1 className="text-5xl font-black text-white leading-[1.1] mb-6 tracking-tighter drop-shadow-lg">Renda<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-300">Extra</span><span className="text-primary">.</span></h1>
+                        <p className="text-gray-200 text-lg mb-10 font-medium leading-relaxed max-w-[90%] drop-shadow-md">Transforme suas habilidades em lucro. Descubra mais de 300 ideias para começar hoje.</p>
+                        <div className="flex flex-col w-full gap-4">
+                            <button onClick={() => navigate('/home')} className="w-full flex items-center justify-between bg-primary hover:bg-primary-dark text-white font-bold py-4 px-6 rounded-2xl shadow-xl shadow-primary/20 transition-all active:scale-[0.98] group"><span className="text-lg">Começar Agora</span><div className="bg-white/20 rounded-full p-1 group-hover:translate-x-1 transition-transform"><Icon name="arrow_forward" /></div></button>
+                            <button onClick={() => navigate('/quiz')} className="w-full flex items-center justify-center gap-2 text-white font-semibold py-4 transition-colors hover:text-primary active:scale-[0.98]"><span>Descobrir meu perfil ideal</span></button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const Home = () => {
+            const navigate = useNavigate();
+            const { theme, toggleTheme } = useTheme();
+            const trendingIdeas = ideas.slice(0, 4);
+
+            return (
+                <div className="flex flex-col pb-24">
+                    <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-white/90 dark:bg-gray-900/90 px-4 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+                        <div className="flex items-center gap-2"><Icon name="account_balance_wallet" className="text-primary text-3xl" /><h1 className="text-xl font-bold tracking-tight">RendaExtra</h1></div>
+                        <div className="flex items-center gap-2">
+                            <button onClick={toggleTheme} className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-400"><Icon name={theme === 'dark' ? 'light_mode' : 'dark_mode'} /></button>
+                            <button onClick={() => navigate('/search')} className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"><Icon name="search" /></button>
+                        </div>
+                    </header>
+                    <main className="flex-1 w-full max-w-2xl mx-auto">
+                        <div className="px-4 pt-6">
+                            <div className="relative flex aspect-[4/3] w-full flex-col justify-end overflow-hidden rounded-2xl bg-cover bg-center p-6 sm:aspect-[2/1] shadow-lg group cursor-pointer" style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVWqC9ouTEGRH5SU0GGeF6PoA2jbPQdnousyuGpHpN2khrOGHNhgkUgrMqCvYnWcCVgv-eGwvbG_VvBN7j7GZdKiUzYioudkLL60vSKtvjqrBCxXmmszdG37CfJW_n_NeF_rn4Fvu5u_xp2zlI137K3wQh9x--pbwIUG2_SRqkDkmHVI2y1vgiwgaoM3-9O7rHL1jlXxQHZnstMy9IY5OeQLaVVzZHqQ4rTOYRnztedleMhF0VL-jqG9qi59nReL7f2EatfWRWIh0')` }} onClick={() => navigate('/quiz')}>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity group-hover:via-black/50"></div>
+                                <div className="relative z-[1] flex flex-col gap-2 text-white">
+                                    <h2 className="text-3xl font-black leading-tight tracking-tighter md:text-4xl drop-shadow-md">Sua jornada para a renda extra começa aqui.</h2>
+                                    <p className="text-sm font-medium text-gray-100 opacity-90">Descubra 300 ideias para ganhar mais com pouco investimento.</p>
+                                    <button className="mt-2 w-fit rounded-full bg-white px-4 py-2 text-xs font-bold text-black shadow-md hover:bg-gray-100 transition-colors">Faça o Quiz</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="pt-8">
+                            <div className="flex items-center justify-between px-4 pb-3"><h3 className="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">Explore por Categoria</h3></div>
+                            <div className="flex overflow-x-auto pb-4 [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-4 gap-3 snap-x snap-mandatory">
+                                {categories.map((cat) => (
+                                    <div key={cat.id} onClick={() => navigate(`/search?category=${cat.searchKey}`)} className="group flex min-w-[140px] snap-start cursor-pointer flex-col gap-3 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:ring-2 hover:ring-primary/50">
+                                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 dark:bg-primary/20 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/40"><Icon name={cat.icon} className="text-2xl transition-transform duration-300" /></div>
+                                        <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300 group-hover:text-primary">{cat.name}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="pt-6">
+                            <h3 className="px-4 pb-4 text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">Ideias em Alta</h3>
+                            <div className="grid grid-cols-2 gap-4 px-4 sm:grid-cols-3">
+                                {trendingIdeas.map((idea) => (
+                                    <div key={idea.id} onClick={() => navigate(`/idea/${idea.id}`)} className="group flex cursor-pointer flex-col gap-3 rounded-2xl bg-white dark:bg-gray-800 p-2 shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 transition-all hover:shadow-md">
+                                        <div className="relative w-full overflow-hidden rounded-xl">
+                                            <img src={idea.image} alt={idea.title} className="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                                            {idea.isNew && <div className="absolute right-2 top-2 rounded-full bg-yellow-400/90 px-2 py-0.5 text-[10px] font-bold text-black backdrop-blur-sm">NOVO</div>}
+                                        </div>
+                                        <div className="flex flex-col px-1 pb-2">
+                                            <h4 className="font-bold text-sm leading-snug line-clamp-2">{idea.title}</h4>
+                                            <div className="mt-2 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+                                                <div className="flex items-center gap-1"><Icon name="attach_money" className="text-[16px]" /><span className="font-medium text-[10px]">{idea.cost === 'Baixo' ? '$' : '$$'}</span></div>
+                                                <div className="flex items-center gap-1"><Icon name="signal_cellular_alt" className="text-[16px]" /><span className="font-medium text-[10px]">{idea.difficulty}</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="mx-4 mt-8 mb-8 rounded-2xl bg-primary/10 p-6 dark:bg-primary/20 border border-primary/20">
+                            <div className="flex items-center justify-between">
+                                <div className="flex flex-col"><span className="text-3xl font-black text-primary">300+</span><span className="font-medium text-gray-700 dark:text-gray-200 text-sm">Oportunidades</span></div>
+                                <div className="h-10 w-px bg-primary/30"></div>
+                                <div className="flex flex-col text-right"><span className="text-lg font-bold text-gray-900 dark:text-white">Até R$ 3k</span><span className="text-xs font-medium text-gray-500 dark:text-gray-400">Potencial inicial</span></div>
+                            </div>
+                        </div>
+                        <div className="px-4 py-8 text-center text-gray-400 dark:text-gray-600">
+                            <div className="flex justify-center gap-4 mb-4"><Icon name="rocket_launch" /><Icon name="favorite" /><Icon name="bolt" /></div>
+                            <p className="text-xs">© 2024 RendaExtra App</p>
+                            <p className="text-[10px] mt-1">Construa seu futuro hoje.</p>
+                        </div>
+                    </main>
+                    <div className="fixed bottom-6 right-6 z-30">
+                        <button onClick={() => navigate('/search')} className="flex h-14 items-center gap-2 rounded-full bg-primary pl-5 pr-6 text-white shadow-lg shadow-primary/40 transition-transform active:scale-95 hover:bg-primary-dark">
+                            <Icon name="view_list" /><span className="font-bold">Ver todas</span>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        const Search = () => {
+            const navigate = useNavigate();
+            const [searchParams] = useSearchParams();
+            const { theme, toggleTheme } = useTheme();
+            const initialQuery = searchParams.get('q') || '';
+            const initialCategory = searchParams.get('category') || '';
+            const [query, setQuery] = useState(initialQuery);
+            const [filter, setFilter] = useState(initialCategory);
+
+            const filteredIdeas = ideas.filter(idea => {
+                const matchesQuery = idea.title.toLowerCase().includes(query.toLowerCase()) || idea.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()));
+                const matchesCategory = filter ? idea.category === filter || idea.tags.includes(filter) : true;
+                return matchesQuery && matchesCategory;
+            });
+
+            return (
+                <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
+                    <header className="sticky top-0 z-20 flex items-center bg-white dark:bg-gray-900 p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-800">
+                        <h1 className="text-xl font-bold leading-tight tracking-tight flex-1">300 Ideias</h1>
+                        <div className="flex items-center gap-2">
+                            <button onClick={toggleTheme} className="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-400"><Icon name={theme === 'dark' ? 'light_mode' : 'dark_mode'} /></button>
+                            <button onClick={() => navigate('/')} className="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"><Icon name="close" /></button>
+                        </div>
+                    </header>
+                    <main className="flex-1 w-full max-w-2xl mx-auto px-4 py-4">
+                        <div className="mb-4">
+                            <label className="flex flex-col h-12 w-full">
+                                <div className="flex w-full flex-1 items-center rounded-xl bg-white dark:bg-gray-800 shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 focus-within:ring-2 focus-within:ring-primary">
+                                    <div className="flex items-center justify-center pl-4 text-gray-400"><Icon name="search" /></div>
+                                    <input className="flex w-full min-w-0 flex-1 bg-transparent px-4 text-base font-normal text-gray-900 dark:text-gray-100 placeholder:text-gray-400 focus:outline-none" placeholder="Busque por 'vender', 'online'..." value={query} onChange={(e) => setQuery(e.target.value)} />
+                                </div>
+                            </label>
+                        </div>
+                        <div className="flex gap-2 pb-4 overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                            <button onClick={() => setFilter('')} className={`flex h-8 shrink-0 items-center justify-center rounded-full px-4 text-xs font-medium transition-colors ${!filter ? 'bg-primary text-white' : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'}`}>Todas</button>
+                            {['Vendas', 'Online', 'Serviços', 'Baixo Custo'].map(tag => (
+                                <button key={tag} onClick={() => setFilter(filter === tag ? '' : tag)} className={`flex h-8 shrink-0 items-center justify-center rounded-full px-4 text-xs font-medium transition-colors ${filter === tag ? 'bg-primary text-white' : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'}`}>{tag}</button>
+                            ))}
+                        </div>
+                        <p className="text-sm text-gray-500 mb-4 px-1">Exibindo {filteredIdeas.length} ideias</p>
+                        <div className="flex flex-col gap-4 pb-8">
+                            {filteredIdeas.map(idea => (
+                                <div key={idea.id} onClick={() => navigate(`/idea/${idea.id}`)} className="flex flex-col rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden cursor-pointer transition-all hover:shadow-md hover:border-primary/50">
+                                    <div className="p-4">
+                                        <div className="flex flex-wrap gap-2 mb-2">
+                                            {idea.tags.slice(0, 3).map((tag, i) => (
+                                                <span key={tag} className={`text-[10px] uppercase font-bold px-2 py-1 rounded-md ${['text-blue-700 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-300', 'text-green-700 bg-green-50 dark:bg-green-900/30 dark:text-green-300', 'text-amber-700 bg-amber-50 dark:bg-amber-900/30 dark:text-amber-300'][i % 3]}`}>{tag}</span>
+                                            ))}
+                                        </div>
+                                        <div className="flex justify-between items-start gap-4">
+                                            <div>
+                                                <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 leading-tight">{idea.title}</h3>
+                                                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{idea.shortDescription}</p>
+                                            </div>
+                                            <img src={idea.image} alt="" className="w-16 h-16 rounded-lg object-cover shrink-0 bg-gray-100" />
+                                        </div>
+                                        <div className="mt-4 flex items-center gap-4 text-xs font-medium text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+                                            <span>Custo: <span className={idea.cost === 'Baixo' ? 'text-green-600' : 'text-amber-600'}>{idea.cost}</span></span>
+                                            <span className="w-1 h-1 rounded-full bg-gray-300"></span>
+                                            <span>Dif: <span className="text-gray-700 dark:text-gray-300">{idea.difficulty}</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                            {filteredIdeas.length === 0 && <div className="flex flex-col items-center justify-center py-12 text-center text-gray-400"><Icon name="search_off" className="text-5xl mb-2 opacity-50"/><p>Nenhuma ideia encontrada.</p></div>}
+                        </div>
+                    </main>
+                </div>
+            );
+        };
+
+        const Detail = () => {
+            const { id } = useParams();
+            const navigate = useNavigate();
+            const { theme, toggleTheme } = useTheme();
+            const idea = ideas.find(i => i.id === id);
+
+            if (!idea) return <div className="p-8 text-center">Ideia não encontrada. <button onClick={() => navigate('/')} className="text-primary underline">Voltar</button></div>;
+
+            const handleShare = () => {
+                const shareUrl = `https://fksinamuniz.github.io/renda_extra/#/idea/${idea.id}`;
+                if (navigator.share) {
+                    navigator.share({ title: `RendaExtra: ${idea.title}`, text: `Olha essa ideia de renda extra: ${idea.shortDescription}`, url: shareUrl }).catch(console.error);
+                } else {
+                    navigator.clipboard.writeText(shareUrl);
+                    alert("Link copiado!");
+                }
+            };
+
+            return (
+                <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 pb-24">
+                    <header className="sticky top-0 z-20 flex items-center bg-white/80 dark:bg-gray-900/80 p-4 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 gap-2">
+                        <button onClick={() => navigate(-1)} className="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200"><Icon name="arrow_back" className="text-xl" /></button>
+                        <h1 className="flex-1 text-center text-base font-bold leading-tight tracking-tight line-clamp-1 px-2">{idea.title}</h1>
+                        <button onClick={handleShare} className="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-400"><Icon name="share" /></button>
+                        <button onClick={toggleTheme} className="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-400"><Icon name={theme === 'dark' ? 'light_mode' : 'dark_mode'} /></button>
+                    </header>
+                    <main className="w-full max-w-2xl mx-auto">
+                        <div className="p-4"><div className="w-full aspect-video rounded-2xl overflow-hidden shadow-sm bg-gray-100"><img src={idea.image} alt={idea.title} className="w-full h-full object-cover" /></div></div>
+                        <div className="grid grid-cols-2 gap-3 px-4 mb-6">
+                            <div className="flex flex-col gap-2 rounded-xl bg-gray-50 dark:bg-gray-800 p-4 border border-gray-100 dark:border-gray-700">
+                                <div className="flex items-center gap-2 text-primary"><Icon name="payments" /><span className="text-xs font-bold uppercase tracking-wide opacity-80">Lucro</span></div>
+                                <p className="text-base font-semibold text-gray-900 dark:text-white leading-tight">{idea.profit}</p>
+                            </div>
+                            <div className="flex flex-col gap-2 rounded-xl bg-gray-50 dark:bg-gray-800 p-4 border border-gray-100 dark:border-gray-700">
+                                <div className="flex items-center gap-2 text-amber-500"><Icon name="account_balance_wallet" /><span className="text-xs font-bold uppercase tracking-wide opacity-80">Investimento</span></div>
+                                <p className="text-base font-semibold text-gray-900 dark:text-white leading-tight">{idea.costValue}</p>
+                            </div>
+                        </div>
+                        <div className="px-4 space-y-6">
+                            <section><h2 className="text-lg font-bold mb-2 flex items-center gap-2"><Icon name="info" className="text-gray-400 text-xl" />O que é?</h2><p className="text-gray-600 dark:text-gray-300 text-base leading-normal bg-white dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm">{idea.fullDescription}</p></section>
+                            <section>
+                                <h2 className="text-lg font-bold mb-2 flex items-center gap-2"><Icon name="check_circle" className="text-gray-400 text-xl" />O que precisa?</h2>
+                                <ul className="space-y-3">{idea.requirements.map((req, i) => (<li key={i} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100 text-primary dark:bg-green-900/30 dark:text-green-400"><Icon name="check" className="text-xs font-bold" /></span><span className="flex-1 pt-0.5">{req}</span></li>))}</ul>
+                            </section>
+                            <section>
+                                <h2 className="text-lg font-bold mb-2 flex items-center gap-2"><Icon name="stairs" className="text-gray-400 text-xl" />Como começar?</h2>
+                                <div className="space-y-4 relative pl-2"><div className="absolute left-[19px] top-2 bottom-4 w-0.5 bg-gray-200 dark:bg-gray-700"></div>{idea.steps.map((step, i) => (<div key={i} className="relative flex gap-4"><div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-gray-800 border-2 border-primary text-primary font-bold text-xs z-10">{i + 1}</div><div className="pt-1.5 pb-2"><p className="text-sm text-gray-700 dark:text-gray-200">{step}</p></div></div>))}</div>
+                            </section>
+                            <section><h2 className="text-lg font-bold mb-2 flex items-center gap-2"><Icon name="lightbulb" className="text-yellow-500 text-xl" />Dica de Ouro</h2><div className="bg-yellow-50 dark:bg-yellow-900/10 p-4 rounded-xl border border-yellow-200 dark:border-yellow-800/30"><p className="text-sm text-gray-700 dark:text-gray-200 italic">"{idea.tips}"</p></div></section>
+                        </div>
+                    </main>
+                    <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-t border-gray-100 dark:border-gray-800 z-30">
+                        <div className="max-w-2xl mx-auto"><button className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98]"><Icon name="rocket_launch" /><span>Vou Tentar!</span></button></div>
+                    </div>
+                </div>
+            );
+        };
+
+        const Quiz = () => {
+            const navigate = useNavigate();
+            const [step, setStep] = useState(0);
+            const steps = [
+                { question: "Qual sua preferência de trabalho?", options: [{ label: "Trabalho Manual", icon: "handyman", value: "manual" }, { label: "Trabalho Online", icon: "laptop_mac", value: "online" }, { label: "Serviços", icon: "room_service", value: "servicos" }] },
+                { question: "Qual seu principal objetivo?", options: [{ label: "Dinheiro Rápido", icon: "bolt", value: "rapido" }, { label: "Longo Prazo", icon: "trending_up", value: "longo" }, { label: "Hobby Lucrativo", icon: "palette", value: "hobby" }] },
+                { question: "Quanto você pode investir?", options: [{ label: "Nada (R$ 0)", icon: "money_off", value: "zero" }, { label: "Pouco (até R$ 100)", icon: "savings", value: "baixo" }, { label: "Investidor (R$ 500+)", icon: "attach_money", value: "medio" }] }
+            ];
+            const handleSelect = (value) => step < steps.length - 1 ? setStep(step + 1) : navigate('/search');
+            const currentStep = steps[step];
+
+            return (
+                <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900">
+                    <header className="flex items-center p-4">
+                        <button onClick={() => step > 0 ? setStep(step - 1) : navigate(-1)} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"><Icon name="arrow_back" /></button>
+                        <div className="flex-1 mx-4 h-2 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-primary transition-all duration-300 ease-out" style={{ width: `${((step + 1) / steps.length) * 100}%` }}></div></div>
+                        <button onClick={() => navigate('/')} className="p-2 text-gray-400"><Icon name="close" /></button>
+                    </header>
+                    <main className="flex-1 flex flex-col items-center justify-center px-6 max-w-md mx-auto w-full pb-10">
+                        <div className="text-center mb-10 animate-fade-in"><span className="text-xs font-bold text-primary uppercase tracking-wider mb-2 block">Passo {step + 1} de {steps.length}</span><h2 className="text-2xl font-black text-gray-900 dark:text-white leading-tight">{currentStep.question}</h2></div>
+                        <div className="flex flex-col gap-4 w-full">
+                            {currentStep.options.map((option, idx) => (
+                                <button key={idx} onClick={() => handleSelect(option.value)} className="flex items-center gap-4 p-5 rounded-2xl border-2 border-gray-100 dark:border-gray-800 hover:border-primary/50 hover:bg-primary/5 dark:hover:bg-primary/10 transition-all active:scale-[0.98] text-left group">
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 group-hover:bg-primary group-hover:text-white transition-colors text-gray-500"><Icon name={option.icon} className="text-2xl" /></div>
+                                    <span className="text-lg font-bold text-gray-700 dark:text-gray-200 group-hover:text-primary transition-colors">{option.label}</span>
+                                </button>
+                            ))}
+                        </div>
+                    </main>
+                </div>
+            );
+        };
+
+        const App = () => (
+            <ThemeProvider>
+                <HashRouter>
+                    <div className="font-display antialiased text-gray-900 dark:text-gray-100 selection:bg-primary/30">
+                        <Routes>
+                            <Route path="/" element={<Welcome />} />
+                            <Route path="/home" element={<Home />} />
+                            <Route path="/search" element={<Search />} />
+                            <Route path="/idea/:id" element={<Detail />} />
+                            <Route path="/quiz" element={<Quiz />} />
+                        </Routes>
+                    </div>
+                </HashRouter>
+            </ThemeProvider>
+        );
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
 </html>
