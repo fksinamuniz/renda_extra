@@ -2,14 +2,14 @@
 import { Idea, Category } from './types';
 
 export const categories: Category[] = [
-  { id: 'vendas', name: 'Vendas e Comércio', icon: 'storefront' },
-  { id: 'online', name: 'Trabalho Online', icon: 'laptop_chromebook' },
-  { id: 'servicos', name: 'Serviços Gerais', icon: 'home_repair_service' },
-  { id: 'beleza', name: 'Beleza e Estética', icon: 'spa' },
-  { id: 'educacao', name: 'Educação e Aulas', icon: 'school' },
-  { id: 'tecnologia', name: 'Tecnologia', icon: 'devices' },
-  { id: 'aluguel', name: 'Aluguel e Economia', icon: 'key' },
-  { id: 'criativo', name: 'Artesanato e Criativo', icon: 'palette' },
+  { id: 'vendas', name: 'Vendas e Comércio', icon: 'storefront', searchKey: 'Vendas' },
+  { id: 'online', name: 'Trabalho Online', icon: 'laptop_chromebook', searchKey: 'Online' },
+  { id: 'servicos', name: 'Serviços Gerais', icon: 'home_repair_service', searchKey: 'Serviços' },
+  { id: 'beleza', name: 'Beleza e Estética', icon: 'spa', searchKey: 'Beleza' },
+  { id: 'educacao', name: 'Educação e Aulas', icon: 'school', searchKey: 'Educação' },
+  { id: 'tecnologia', name: 'Tecnologia', icon: 'devices', searchKey: 'Tecnologia' },
+  { id: 'aluguel', name: 'Aluguel e Economia', icon: 'key', searchKey: 'Aluguel' },
+  { id: 'criativo', name: 'Artesanato e Criativo', icon: 'palette', searchKey: 'Criativo' },
 ];
 
 const baseIdeas: Idea[] = [
@@ -922,7 +922,7 @@ const extraIdeas: Idea[] = [
   }
 ];
 
-// Gerar mais ideias programaticamente para atingir volume, mas mantendo qualidade
+// Gerador de ideias adicionais para popular o app
 const generateMoreIdeas = (): Idea[] => {
   const list: Idea[] = [
     {
@@ -1265,8 +1265,461 @@ const generateMoreIdeas = (): Idea[] => {
   return [...list, ...variations];
 }
 
+// Mais um lote de ideias diversificadas
+const generateBatch3Ideas = (): Idea[] => {
+  return [
+    {
+      id: 'revisao-tcc',
+      title: 'Revisão de Textos Acadêmicos',
+      category: 'Educação',
+      shortDescription: 'Corrija e formate TCCs e teses.',
+      fullDescription: 'Muitos estudantes dominam o conteúdo mas têm dificuldade com a norma culta e regras da ABNT. Se você tem bom português, ofereça revisão.',
+      cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 5 - R$ 15 por página', difficulty: 'Médio',
+      tags: ['Educação', 'Online', 'Freelancer'],
+      image: 'https://images.unsplash.com/photo-1456324854829-4971bcd9be86?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Domínio da gramática', 'Conhecimento ABNT'], steps: ['Divulgue em grupos de faculdade'], tips: 'Cobre 50% de sinal.'
+    },
+    {
+      id: 'papel-parede',
+      title: 'Instalação de Papel de Parede',
+      category: 'Serviços',
+      shortDescription: 'Aplique papel de parede e adesivos.',
+      fullDescription: 'Transformar um ambiente em poucas horas é o desejo de muitos. A instalação requer precisão e paciência, mas paga bem.',
+      cost: 'Baixo', costValue: 'R$ 100 (Kit ferramentas)', profit: 'R$ 150 - R$ 400 por parede', difficulty: 'Médio',
+      tags: ['Decoração', 'Manual', 'Serviços'],
+      image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Espátulas', 'Estilete', 'Escada'], steps: ['Treine em sua casa', 'Ofereça para arquitetos'], tips: 'O acabamento nos cantos é o segredo.'
+    },
+    {
+      id: 'limpeza-ar',
+      title: 'Limpeza de Ar Condicionado',
+      category: 'Serviços',
+      shortDescription: 'Higienização de splits e filtros.',
+      fullDescription: 'Serviço essencial para a saúde e com alta demanda no verão. Limpeza de filtros e serpentinas.',
+      cost: 'Médio', costValue: 'R$ 400 (Bolsa coletora)', profit: 'R$ 100 - R$ 250 por aparelho', difficulty: 'Médio',
+      tags: ['Manutenção', 'Serviços', 'Limpeza'],
+      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Bolsa coletora', 'Bactericida', 'Lavadora'], steps: ['Curso rápido', 'Divulgue em escritórios'], tips: 'Ofereça contrato de manutenção semestral.'
+    },
+    {
+      id: 'filtros-insta',
+      title: 'Criação de Filtros Instagram',
+      category: 'Online',
+      shortDescription: 'Crie filtros de realidade aumentada.',
+      fullDescription: 'Marcas e influenciadores pagam por filtros personalizados para engajar sua audiência.',
+      cost: 'Baixo', costValue: 'R$ 0 (PC)', profit: 'R$ 300 - R$ 2.000 por projeto', difficulty: 'Difícil',
+      tags: ['Criativo', 'Tecnologia', 'Online'],
+      image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Spark AR (Software gratuito)', 'Criatividade'], steps: ['Aprenda tutoriais no YouTube', 'Crie portfólio'], tips: 'Filtros de maquiagem e cor são os mais pedidos.'
+    },
+    {
+      id: 'venda-plantas',
+      title: 'Venda de Mudas de Plantas',
+      category: 'Vendas',
+      shortDescription: 'Cultive e venda plantas ornamentais.',
+      fullDescription: 'O estilo "Urban Jungle" está em alta. Suculentas, jiboias e costelas-de-adão são fáceis de reproduzir.',
+      cost: 'Baixo', costValue: 'R$ 50 (Terra/Vasos)', profit: 'R$ 20 - R$ 100 por planta', difficulty: 'Fácil',
+      tags: ['Natureza', 'Vendas', 'Decoração'],
+      image: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Espaço com luz', 'Vasos'], steps: ['Faça mudas das suas plantas', 'Venda em feiras ou Instagram'], tips: 'Venda com cachepô bonito para agregar valor.'
+    },
+    {
+      id: 'declaracao-ir',
+      title: 'Declaração de Imposto de Renda',
+      category: 'Serviços',
+      shortDescription: 'Ajude pessoas a declarar o IR.',
+      fullDescription: 'Sazonal (Março/Abril), mas muito lucrativo. Muitas pessoas têm medo de errar e preferem pagar.',
+      cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 100 - R$ 500 por declaração', difficulty: 'Médio',
+      tags: ['Financeiro', 'Sazonal', 'Serviços'],
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Conhecimento do programa da Receita'], steps: ['Atualize-se sobre as regras do ano'], tips: 'Fidelize o cliente para o ano seguinte.'
+    },
+    {
+      id: 'personal-shopper',
+      title: 'Personal Shopper',
+      category: 'Serviços',
+      shortDescription: 'Faça compras para outras pessoas.',
+      fullDescription: 'Ajude clientes sem tempo a comprar roupas, presentes ou até itens de supermercado.',
+      cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 50 - R$ 150/hora ou %', difficulty: 'Fácil',
+      tags: ['Moda', 'Serviços', 'Atendimento'],
+      image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Bom gosto', 'Organização'], steps: ['Defina seu nicho (mercado ou moda)'], tips: 'Conheça as melhores promoções da cidade.'
+    },
+    {
+      id: 'costura-criativa',
+      title: 'Costura Criativa',
+      category: 'Criativo',
+      shortDescription: 'Faça necessaires, bolsas e estojos.',
+      fullDescription: 'Peças de tecido personalizadas são ótimos presentes. Diferente da costura de roupas, é mais simples de aprender.',
+      cost: 'Médio', costValue: 'R$ 600 (Máquina)', profit: 'R$ 500 - R$ 2.000/mês', difficulty: 'Médio',
+      tags: ['Artesanato', 'Vendas', 'Manual'],
+      image: 'https://images.unsplash.com/photo-1520960857466-2862f2344df0?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Máquina de costura simples', 'Tecidos'], steps: ['Tutoriais no YouTube', 'Faça peças piloto'], tips: 'Kits maternidade (porta fralda) vendem muito.'
+    },
+    {
+      id: 'cohost-airbnb',
+      title: 'Co-host de Airbnb',
+      category: 'Serviços',
+      shortDescription: 'Gerencie a locação de imóveis para terceiros.',
+      fullDescription: 'Muitos donos de imóveis querem alugar no Airbnb mas não têm tempo de responder hóspedes e cuidar da limpeza. Faça isso por eles.',
+      cost: 'Baixo', costValue: 'R$ 0', profit: '15% - 25% da reserva', difficulty: 'Médio',
+      tags: ['Aluguel', 'Gestão', 'Online'],
+      image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Organização', 'Disponibilidade'], steps: ['Procure imóveis vazios', 'Proponha a gestão'], tips: 'Automatize mensagens de check-in.'
+    },
+    {
+      id: 'afiacao-facas',
+      title: 'Afiação de Facas e Tesouras',
+      category: 'Serviços',
+      shortDescription: 'Afie ferramentas de corte a domicílio.',
+      fullDescription: 'Restaurantes, salões de beleza e pet shops precisam de afiação constante. Serviço rápido e técnico.',
+      cost: 'Baixo', costValue: 'R$ 100 (Pedras)', profit: 'R$ 10 - R$ 30 por peça', difficulty: 'Médio',
+      tags: ['Manual', 'Serviços', 'Técnico'],
+      image: 'https://images.unsplash.com/photo-1588207922802-e40476c2bc92?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Pedras de afiar ou esmeril'], steps: ['Aprenda o ângulo correto', 'Visite comércios'], tips: 'Ofereça a primeira afiação grátis para teste.'
+    },
+    {
+      id: 'redes-protecao',
+      title: 'Redes de Proteção',
+      category: 'Serviços',
+      shortDescription: 'Instale redes em janelas e sacadas.',
+      fullDescription: 'Item de segurança obrigatório para quem tem crianças ou pets em apartamento. Alta responsabilidade.',
+      cost: 'Médio', costValue: 'R$ 400 (Ferramentas)', profit: 'R$ 150 - R$ 500 por janela', difficulty: 'Médio',
+      tags: ['Segurança', 'Serviços', 'Manual'],
+      image: 'https://images.unsplash.com/photo-1605218427368-35b0168e032b?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Furadeira potente', 'Ganchos e redes certificadas'], steps: ['Curso de instalador', 'Parceria com lojas de redes'], tips: 'Segurança em primeiro lugar, use materiais certificados.'
+    },
+    {
+      id: 'convites-digitais',
+      title: 'Convites Digitais Interativos',
+      category: 'Online',
+      shortDescription: 'Crie convites em PDF/Site para eventos.',
+      fullDescription: 'Ecológicos e modernos. Convites com botões clicáveis para confirmar presença e ver a localização.',
+      cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 50 - R$ 200 por arte', difficulty: 'Fácil',
+      tags: ['Design', 'Eventos', 'Online'],
+      image: 'https://images.unsplash.com/photo-1511268559489-34b624fbfcf5?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Canva ou Photoshop'], steps: ['Crie portfólio de casamentos e aniversários'], tips: 'Ofereça o site dos noivos junto.'
+    },
+    {
+      id: 'temperos-caseiros',
+      title: 'Temperos Caseiros',
+      category: 'Vendas',
+      shortDescription: 'Produza e venda mix de temperos.',
+      fullDescription: 'Lemon pepper, sal com ervas, alho triturado. Praticidade para quem cozinha.',
+      cost: 'Baixo', costValue: 'R$ 100', profit: 'R$ 500 - R$ 1.500/mês', difficulty: 'Fácil',
+      tags: ['Alimentação', 'Vendas', 'Artesanal'],
+      image: 'https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Potes', 'Ervas secas', 'Sal grosso'], steps: ['Crie suas misturas exclusivas', 'Venda em feiras'], tips: 'Kits de churrasco vendem bem.'
+    },
+    {
+      id: 'limpeza-calhas',
+      title: 'Limpeza de Calhas',
+      category: 'Serviços',
+      shortDescription: 'Remova folhas e sujeira de telhados.',
+      fullDescription: 'Manutenção preventiva essencial. Exige coragem e cuidado com altura.',
+      cost: 'Baixo', costValue: 'R$ 200 (Escada)', profit: 'R$ 150 - R$ 400 por casa', difficulty: 'Médio',
+      tags: ['Manutenção', 'Serviços', 'Altura'],
+      image: 'https://images.unsplash.com/photo-1621160329382-7b7227713503?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Escada grande', 'Luvas', 'Cinto de segurança'], steps: ['Divulgue em bairros arborizados'], tips: 'Ofereça pequenos reparos no telhado também.'
+    },
+    {
+      id: 'guia-local',
+      title: 'Guia Turístico Local',
+      category: 'Serviços',
+      shortDescription: 'Crie roteiros para turistas na sua cidade.',
+      fullDescription: 'Leve visitantes para conhecer os "segredos" que só os moradores conhecem. Experiências autênticas (Airbnb Experiences).',
+      cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 100 - R$ 300 por passeio', difficulty: 'Fácil',
+      tags: ['Turismo', 'Serviços', 'Social'],
+      image: 'https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Conhecer bem a cidade', 'Simpatia'], steps: ['Crie um roteiro temático (ex: bares, histórico)', 'Cadastre no Airbnb'], tips: 'Tire fotos incríveis dos turistas durante o passeio.'
+    },
+    {
+      id: 'edicao-fotos-ecommerce',
+      title: 'Edição de Fotos de Produtos',
+      category: 'Online',
+      shortDescription: 'Melhore fotos para lojas online.',
+      fullDescription: 'Lojistas precisam de fotos com fundo branco e bem iluminadas para vender no Mercado Livre e Shopee.',
+      cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 5 - R$ 20 por foto', difficulty: 'Médio',
+      tags: ['Design', 'Online', 'E-commerce'],
+      image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Photoshop ou Apps de edição'], steps: ['Aprenda a recortar fundo perfeitamente'], tips: 'Venda pacotes de 50 ou 100 fotos.'
+    },
+    {
+      id: 'restauracao-livros',
+      title: 'Restauração de Livros',
+      category: 'Serviços',
+      shortDescription: 'Recupere livros antigos e danificados.',
+      fullDescription: 'Nicho específico para bibliófilos e colecionadores. Limpeza, troca de capa e reparo de páginas.',
+      cost: 'Baixo', costValue: 'R$ 50 (Colas/Papéis)', profit: 'R$ 50 - R$ 300 por livro', difficulty: 'Difícil',
+      tags: ['Artesanal', 'Serviços', 'Nicho'],
+      image: 'https://images.unsplash.com/photo-1515787366009-7cbdd2dc587b?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Paciência', 'Materiais de encadernação'], steps: ['Estude técnicas de conservação'], tips: 'Documente o processo em vídeo, é satisfatório e viraliza.'
+    },
+    {
+      id: 'bartender-freelancer',
+      title: 'Bartender para Festas',
+      category: 'Serviços',
+      shortDescription: 'Prepare drinks em eventos privados.',
+      fullDescription: 'Caipirinhas, Gin Tônica e drinks clássicos. Leve seus utensílios e lista de compras para o cliente.',
+      cost: 'Médio', costValue: 'R$ 300 (Kit bar)', profit: 'R$ 200 - R$ 500 por evento', difficulty: 'Médio',
+      tags: ['Eventos', 'Bebidas', 'Serviços'],
+      image: 'https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Kit coqueteleira', 'Receitas decoradas'], steps: ['Monte um cardápio de drinks'], tips: 'Drinks sem álcool bonitos também fazem sucesso.'
+    },
+    {
+      id: 'aluguel-brinquedos',
+      title: 'Aluguel de Brinquedos',
+      category: 'Aluguel',
+      shortDescription: 'Alugue piscina de bolinhas ou infláveis.',
+      fullDescription: 'Festas infantis sempre precisam. Também vale para itens caros de bebê (cadeirinhas, andadores) para uso temporário.',
+      cost: 'Alto', costValue: 'R$ 1.000+', profit: 'R$ 100 - R$ 400 por locação', difficulty: 'Fácil',
+      tags: ['Aluguel', 'Crianças', 'Eventos'],
+      image: 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Espaço para guardar', 'Transporte'], steps: ['Compre brinquedos duráveis usados'], tips: 'A higienização entre aluguéis é obrigatória.'
+    },
+    {
+      id: 'organizacao-financeira',
+      title: 'Consultoria Financeira Pessoal',
+      category: 'Educação',
+      shortDescription: 'Ajude pessoas a organizar o orçamento.',
+      fullDescription: 'Muitas pessoas ganham bem mas gastam mal. Ajude com planilhas, corte de gastos e planejamento de dívidas.',
+      cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 100 - R$ 300 por sessão', difficulty: 'Médio',
+      tags: ['Financeiro', 'Consultoria', 'Online'],
+      image: 'https://images.unsplash.com/photo-1554224154-260327c00c4b?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Conhecimento financeiro', 'Excel'], steps: ['Crie uma metodologia simples'], tips: 'Venda a "tranquilidade" e não a planilha.'
+    }
+  ];
+}
+
+const generateBatch4Ideas = (): Idea[] => {
+  return [
+    {
+      id: 'banho-tosa-domicilio',
+      title: 'Banho e Tosa a Domicílio',
+      category: 'Serviços',
+      shortDescription: 'Leve o pet shop até a casa do cliente.',
+      fullDescription: 'Muitos donos preferem não levar o pet ao pet shop para evitar estresse. Com uma van adaptada ou equipamentos portáteis, você atende na casa deles.',
+      cost: 'Médio', costValue: 'R$ 500 (Equipamentos)', profit: 'R$ 80 - R$ 150 por pet', difficulty: 'Médio',
+      tags: ['Animais', 'Serviços', 'Em Casa'],
+      image: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Secador potente', 'Tesouras', 'Shampoos'], steps: ['Curso de tosa', 'Divulgação local'], tips: 'Tosa higiênica é a mais pedida.'
+    },
+    {
+      id: 'macarons',
+      title: 'Macarons Franceses',
+      category: 'Vendas',
+      shortDescription: 'Doces finos para casamentos e presentes.',
+      fullDescription: 'O doce mais elegante da confeitaria. Difícil de fazer, mas com altíssimo valor agregado. Perfeito para lembrancinhas de luxo.',
+      cost: 'Médio', costValue: 'R$ 200 (Farinha amêndoas)', profit: 'R$ 3.000 - R$ 6.000', difficulty: 'Difícil',
+      tags: ['Doces', 'Luxo', 'Vendas'],
+      image: 'https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Farinha de amêndoas', 'Forno preciso'], steps: ['Domine a técnica do "macaronage"', 'Crie embalagens premium'], tips: 'Cores pastéis vendem mais.'
+    },
+    {
+      id: 'lacos-tiaras',
+      title: 'Laços e Tiaras Infantis',
+      category: 'Criativo',
+      shortDescription: 'Acessórios de cabelo para bebês e meninas.',
+      fullDescription: 'Mães amam enfeitar suas filhas. Laços personalizados, temáticos e faixinhas para recém-nascidos têm margem de lucro gigante.',
+      cost: 'Baixo', costValue: 'R$ 50 (Fitas)', profit: 'R$ 500 - R$ 2.000', difficulty: 'Fácil',
+      tags: ['Artesanato', 'Crianças', 'Moda'],
+      image: 'https://images.unsplash.com/photo-1512909481869-0eaa1e981756?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Fitas de cetim/gorgurão', 'Cola quente'], steps: ['Aprenda dobras no YouTube', 'Venda no Instagram'], tips: 'Kits "tal mãe, tal filha" são sucesso.'
+    },
+    {
+      id: 'gestao-google',
+      title: 'Gestão de Google Meu Negócio',
+      category: 'Online',
+      shortDescription: 'Coloque empresas locais no mapa do Google.',
+      fullDescription: 'Muitas lojas não aparecem no Google Maps ou têm informações erradas. Atualize fotos, horários e responda avaliações para elas.',
+      cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 200 - R$ 500 por cliente', difficulty: 'Fácil',
+      tags: ['Marketing', 'Online', 'B2B'],
+      image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Conta Google', 'Smartphone'], steps: ['Aborde comércios sem foto no mapa', 'Ofereça atualização'], tips: 'Mostre o aumento de ligações após o serviço.'
+    },
+    {
+      id: 'amigurumi',
+      title: 'Amigurumi (Crochê)',
+      category: 'Criativo',
+      shortDescription: 'Bonecos de crochê feitos à mão.',
+      fullDescription: 'Técnica japonesa de fazer bonecos. Muito valorizado para decoração de quarto de bebê e brinquedos seguros.',
+      cost: 'Baixo', costValue: 'R$ 50 (Linhas)', profit: 'R$ 50 - R$ 200 por peça', difficulty: 'Médio',
+      tags: ['Artesanato', 'Manual', 'Tendência'],
+      image: 'https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Agulha de crochê', 'Linha amigurumi', 'Enchimento'], steps: ['Receitas (vídeo-aulas)', 'Treino de pontos'], tips: 'Personagens da cultura pop (Geek) vendem para adultos também.'
+    },
+    {
+      id: 'adestrador',
+      title: 'Adestrador de Cães',
+      category: 'Serviços',
+      shortDescription: 'Ensine comandos básicos e corrija comportamentos.',
+      fullDescription: 'Cães que puxam a guia, latem muito ou destroem móveis. Ajude os donos a terem uma convivência melhor com o pet.',
+      cost: 'Baixo', costValue: 'R$ 100 (Petiscos/Guia)', profit: 'R$ 80 - R$ 200/aula', difficulty: 'Difícil',
+      tags: ['Animais', 'Serviços', 'Educação'],
+      image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Curso de adestramento', 'Amor por animais'], steps: ['Comece com cães de amigos', 'Use reforço positivo'], tips: 'Venda pacotes de 5 ou 10 aulas.'
+    },
+    {
+      id: 'plant-sitter',
+      title: 'Cuidador de Plantas (Plant Sitter)',
+      category: 'Serviços',
+      shortDescription: 'Cuide de plantas enquanto os donos viajam.',
+      fullDescription: 'Assim como pets, plantas morrem se ficarem semanas sem água. Vá à casa do cliente regar e podar.',
+      cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 30 - R$ 80 por visita', difficulty: 'Fácil',
+      tags: ['Plantas', 'Serviços', 'Fácil'],
+      image: 'https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Conhecimento básico de rega'], steps: ['Divulgue em grupos de plantas', 'Floriculturas'], tips: 'Envie fotos das plantas "felizes" para o dono.'
+    },
+    {
+      id: 'landing-pages',
+      title: 'Criação de Landing Pages',
+      category: 'Online',
+      shortDescription: 'Crie páginas de venda para produtos.',
+      fullDescription: 'Use ferramentas "no-code" (sem código) como Elementor ou Wix para criar sites de página única para lançamentos.',
+      cost: 'Baixo', costValue: 'R$ 50 (Hospedagem)', profit: 'R$ 300 - R$ 1.500 por página', difficulty: 'Médio',
+      tags: ['Tecnologia', 'Online', 'Web'],
+      image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Computador', 'Noção de design'], steps: ['Aprenda WordPress/Elementor', 'Copie páginas famosas para treinar'], tips: 'Foque em velocidade de carregamento.'
+    },
+    {
+      id: 'insulfilm',
+      title: 'Instalação de Insulfilm',
+      category: 'Serviços',
+      shortDescription: 'Aplique películas em janelas residenciais.',
+      fullDescription: 'Reduz calor e aumenta privacidade em casas e escritórios. Serviço rápido com boa margem.',
+      cost: 'Médio', costValue: 'R$ 300 (Material)', profit: 'R$ 200 - R$ 600 por serviço', difficulty: 'Médio',
+      tags: ['Casa', 'Serviços', 'Manual'],
+      image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Espátulas', 'Soprador térmico', 'Estilete'], steps: ['Curso prático', 'Parceria com vidraçarias'], tips: 'Ofereça películas decorativas ou jateadas.'
+    },
+    {
+      id: 'polimento-farois',
+      title: 'Polimento de Faróis',
+      category: 'Serviços',
+      shortDescription: 'Recupere faróis amarelados de carros.',
+      fullDescription: 'Faróis foscos reprovam na vistoria e são feios. O serviço leva 40 minutos e usa lixas e polidores.',
+      cost: 'Baixo', costValue: 'R$ 100 (Kit)', profit: 'R$ 80 - R$ 150 por par', difficulty: 'Fácil',
+      tags: ['Automotivo', 'Serviços', 'Rápido'],
+      image: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Lixas d\'água', 'Massa de polir', 'Selante'], steps: ['Treine no seu carro', 'Faça a domicílio'], tips: 'Aplique verniz UV para durar mais.'
+    },
+    {
+      id: 'semijoias',
+      title: 'Revenda de Semijoias',
+      category: 'Vendas',
+      shortDescription: 'Compre peças no atacado e revenda.',
+      fullDescription: 'Semijoias têm alta margem (100% a 300%). Monte uma maleta e leve até as clientes ou venda online.',
+      cost: 'Médio', costValue: 'R$ 500 (Kit inicial)', profit: 'R$ 1.000 - R$ 4.000', difficulty: 'Fácil',
+      tags: ['Moda', 'Vendas', 'Mulheres'],
+      image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Fornecedor confiável', 'Embalagens'], steps: ['Compre peças clássicas primeiro', 'Tire boas fotos'], tips: 'Ofereça garantia de banho, isso passa confiança.'
+    },
+    {
+      id: 'donuts',
+      title: 'Donuts Gourmet',
+      category: 'Vendas',
+      shortDescription: 'Rosquinhas americanas recheadas e decoradas.',
+      fullDescription: 'Coloridos e "instagramáveis". Ótimos para festas ou para vender na rua.',
+      cost: 'Baixo', costValue: 'R$ 100', profit: 'R$ 800 - R$ 2.500', difficulty: 'Médio',
+      tags: ['Doces', 'Vendas', 'Culinária'],
+      image: 'https://images.unsplash.com/photo-1551024601-564d6d674f30?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Farinha, fermento', 'Óleo para fritar'], steps: ['Acerte a massa fofinha', 'Decore com confeitos'], tips: 'Caixas com 4 unidades são ótimos presentes.'
+    },
+    {
+      id: 'limpeza-vidros',
+      title: 'Limpeza de Vidros',
+      category: 'Serviços',
+      shortDescription: 'Limpeza profissional de janelas e vitrines.',
+      fullDescription: 'Lojas precisam de vitrines limpas toda semana. Residências precisam a cada 2 meses.',
+      cost: 'Baixo', costValue: 'R$ 150 (Rodo/Extensor)', profit: 'R$ 100 - R$ 400 por dia', difficulty: 'Médio',
+      tags: ['Limpeza', 'Serviços', 'Comércio'],
+      image: 'https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Rodo combinado', 'Lavador', 'Cinto (se altura)'], steps: ['Ofereça para lojas de rua'], tips: 'Use técnica em "S" para não deixar marcas.'
+    },
+    {
+      id: 'aulas-xadrez',
+      title: 'Aulas de Xadrez',
+      category: 'Educação',
+      shortDescription: 'Ensine estratégia e raciocínio lógico.',
+      fullDescription: 'O xadrez voltou à moda. Ensine crianças ou adultos a jogar, presencialmente ou online.',
+      cost: 'Baixo', costValue: 'R$ 0', profit: 'R$ 50 - R$ 120/hora', difficulty: 'Médio',
+      tags: ['Educação', 'Jogos', 'Online'],
+      image: 'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Tabuleiro (ou site)', 'Conhecimento avançado'], steps: ['Divulgue em escolas', 'Clubes'], tips: 'Organize pequenos torneios entre alunos.'
+    },
+    {
+      id: 'inst-cortinas',
+      title: 'Instalação de Cortinas',
+      category: 'Serviços',
+      shortDescription: 'Instale varões, trilhos e persianas.',
+      fullDescription: 'Serviço rápido que exige apenas furadeira e nível. Muitas lojas de decoração precisam de instaladores parceiros.',
+      cost: 'Baixo', costValue: 'R$ 200 (Ferramentas)', profit: 'R$ 80 - R$ 200 por visita', difficulty: 'Fácil',
+      tags: ['Casa', 'Serviços', 'Manual'],
+      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Furadeira', 'Nível', 'Buchas'], steps: ['Deixe cartão em lojas de tecido'], tips: 'Leve aspirador portátil para limpar o pó do furo.'
+    },
+    {
+      id: 'palha-italiana',
+      title: 'Palha Italiana',
+      category: 'Vendas',
+      shortDescription: 'Doce de brigadeiro com biscoito.',
+      fullDescription: 'Mais fácil de transportar que o brigadeiro e dura mais. Corte em quadrados e embale.',
+      cost: 'Baixo', costValue: 'R$ 80', profit: 'R$ 500 - R$ 1.500', difficulty: 'Fácil',
+      tags: ['Doces', 'Vendas', 'Fácil'],
+      image: 'https://images.unsplash.com/photo-1625936281987-9c6703d82741?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Leite condensado', 'Biscoito maizena'], steps: ['Cozinhe o brigadeiro', 'Misture biscoito', 'Corte frio'], tips: 'Sabores como Leite Ninho com Oreo vendem muito.'
+    },
+    {
+      id: 'streamer',
+      title: 'Streamer de Jogos',
+      category: 'Online',
+      shortDescription: 'Transmita suas partidas ao vivo.',
+      fullDescription: 'Se você joga bem ou é engraçado, faça lives na Twitch ou YouTube. Ganhe com subs e doações.',
+      cost: 'Médio', costValue: 'R$ 0 (se já tem PC)', profit: 'Variável (Longo prazo)', difficulty: 'Difícil',
+      tags: ['Games', 'Online', 'Entretenimento'],
+      image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800',
+      requirements: ['PC Gamer ou Console', 'Internet rápida', 'Microfone'], steps: ['Crie canal na Twitch', 'Tenha horário fixo'], tips: 'Interaja com o chat o tempo todo.'
+    },
+    {
+      id: 'produtos-limpeza',
+      title: 'Produtos de Limpeza Artesanais',
+      category: 'Vendas',
+      shortDescription: 'Faça sabão líquido, amaciante e desinfetante.',
+      fullDescription: 'Venda em garrafas PET reutilizadas. Custo de produção muito baixo e alta demanda na vizinhança.',
+      cost: 'Baixo', costValue: 'R$ 100', profit: 'R$ 500 - R$ 2.000', difficulty: 'Fácil',
+      tags: ['Casa', 'Vendas', 'Química'],
+      image: 'https://images.unsplash.com/photo-1585832770485-e68a5dbfad52?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Óleo usado (sabão)', 'Essências', 'Garrafas'], steps: ['Receitas seguras', 'Venda porta a porta'], tips: 'Recicle óleo de cozinha dos vizinhos para fazer o sabão.'
+    },
+    {
+      id: 'mel-artesanal',
+      title: 'Revenda de Mel',
+      category: 'Vendas',
+      shortDescription: 'Venda mel puro de produtores locais.',
+      fullDescription: 'Compre no atacado de apicultores e fracione ou revenda com sua marca. Produto saudável e valorizado.',
+      cost: 'Médio', costValue: 'R$ 300', profit: 'R$ 500 - R$ 1.500', difficulty: 'Fácil',
+      tags: ['Alimentação', 'Saúde', 'Vendas'],
+      image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Fornecedor de mel puro'], steps: ['Crie rótulos bonitos', 'Venda em academias/escritórios'], tips: 'Mel no favo é um produto premium.'
+    },
+    {
+      id: 'queijos-vinhos',
+      title: 'Kits de Queijos e Vinhos',
+      category: 'Vendas',
+      shortDescription: 'Monte tábuas de frios para delivery.',
+      fullDescription: 'Tábuas de frios são ótimas para "noites românticas" em casa. Monte com beleza e entregue.',
+      cost: 'Médio', costValue: 'R$ 300', profit: 'R$ 80 - R$ 200 por tábua', difficulty: 'Médio',
+      tags: ['Alimentação', 'Luxo', 'Delivery'],
+      image: 'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?auto=format&fit=crop&q=80&w=800',
+      requirements: ['Tábuas de madeira/MDF', 'Queijos variados', 'Embutidos'], steps: ['Aprenda montagem (charcutaria)', 'Fotos no Instagram'], tips: 'Inclua frutas como uva e morango para dar cor.'
+    }
+  ];
+}
+
 export const ideas: Idea[] = [
   ...baseIdeas,
   ...extraIdeas,
-  ...generateMoreIdeas()
+  ...generateMoreIdeas(),
+  ...generateBatch3Ideas(),
+  ...generateBatch4Ideas()
 ];

@@ -65,7 +65,7 @@ const Home: React.FC = () => {
             {categories.map((cat) => (
               <div 
                 key={cat.id}
-                onClick={() => navigate(`/search?category=${cat.name}`)}
+                onClick={() => navigate(`/search?category=${cat.searchKey}`)}
                 className="group flex min-w-[140px] snap-start cursor-pointer flex-col gap-3 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:ring-2 hover:ring-primary/50"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 dark:bg-primary/20 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/40">
